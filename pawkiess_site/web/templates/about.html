@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us — Pawkiess</title>
+  <meta name="description" content="Learn about Pawkiess—our mission to bring loving, trusted pet care to every neighborhood.">
+  <script>tailwind={config:{theme:{extend:{colors:{brand:{500:'#18b68c',600:'#0d9675'}}}}}};</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-white text-slate-800">
+  <header class="border-b bg-white sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="{% url 'home' %}" class="flex items-center gap-2 font-semibold text-brand-600">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-100 text-brand-600">🐾</span>
+        <span>Pawkiess</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="{% url 'services' %}" class="hover:text-brand-600">Services</a>
+        <a href="{% url 'owner_features' %}" class="hover:text-brand-600">Pet Owners</a>
+        <a href="{% url 'sitter_features' %}" class="hover:text-brand-600">Pet Sitters</a>
+        <a href="{% url 'pricing' %}" class="hover:text-brand-600">Pricing</a>
+        <a href="{% url 'contact' %}" class="hover:text-brand-600">Contact</a>
+      </nav>
+      <a href="{% url 'signup' %}" class="hidden md:inline-flex px-3 py-2 rounded-md bg-brand-600 text-white">Join us</a>
+      <button id="menuBtn" class="md:hidden h-10 w-10 rounded hover:bg-slate-100">
+        <svg class="m-auto h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4">
+      <div class="grid gap-2 text-sm">
+        <a href="{% url 'services' %}" class="px-3 py-2 rounded hover:bg-slate-100">Services</a>
+        <a href="{% url 'owner_features' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pet Owners</a>
+        <a href="{% url 'sitter_features' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pet Sitters</a>
+        <a href="{% url 'pricing' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pricing</a>
+        <a href="{% url 'contact' %}" class="px-3 py-2 rounded hover:bg-slate-100">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="bg-gradient-to-b from-brand-50 to-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl sm:text-4xl font-bold">We believe happy pets make happy people</h1>
+        <p class="mt-3 text-slate-600 max-w-3xl">Pawkiess was founded by lifelong pet lovers to solve a simple problem: finding trustworthy, reliable care for our furry family. Today, we connect pet parents with background-checked sitters who treat pets like their own.</p>
+        <div class="mt-8 grid gap-6 md:grid-cols-3">
+          <div class="p-6 rounded-xl border bg-white">
+            <div class="text-sm text-slate-500">Our mission</div>
+            <div class="mt-1 font-semibold">Put pet wellbeing first</div>
+            <p class="mt-2 text-sm text-slate-600">Safety, comfort, and enrichment guide everything we build.</p>
+          </div>
+          <div class="p-6 rounded-xl border bg-white">
+            <div class="text-sm text-slate-500">Our promise</div>
+            <div class="mt-1 font-semibold">Trust through transparency</div>
+            <p class="mt-2 text-sm text-slate-600">Live updates, reviews, and clear policies you can count on.</p>
+          </div>
+          <div class="p-6 rounded-xl border bg-white">
+            <div class="text-sm text-slate-500">Our impact</div>
+            <div class="mt-1 font-semibold">Empower local sitters</div>
+            <p class="mt-2 text-sm text-slate-600">Flexible, fairly paid work for caring professionals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-semibold">Our story</h2>
+          <p class="mt-3 text-slate-600">From a small group of neighborhood sitters to a citywide community, Pawkiess grew through word of mouth—pet by pet, family by family.</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-700">
+            <li>2019 — Launched MVP in 3 neighborhoods</li>
+            <li>2021 — Introduced GPS walk tracking and photo timelines</li>
+            <li>2023 — Expanded to grooming and daycare</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow">
+          <img src="https://images.unsplash.com/photo-1568572933382-74d440642117?q=80&w=1470&auto=format&fit=crop" alt="Team with pets" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-semibold">Meet our team</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {% for member in [
+            {'name':'Ava','role':'Founder & CEO','img':'https://images.unsplash.com/photo-1531123414780-f7423f52b397?q=80&w=1374&auto=format&fit=crop'},
+            {'name':'Leo','role':'Head of Trust','img':'https://images.unsplash.com/photo-1573497491208-6b1acb260507?q=80&w=1374&auto=format&fit=crop'},
+            {'name':'Maya','role':'Design Lead','img':'https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1374&auto=format&fit=crop'},
+            {'name':'Noah','role':'Eng Lead','img':'https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1374&auto=format&fit=crop'}
+          ] %}
+          <div class="p-4 rounded-xl border bg-white">
+            <div class="aspect-square rounded-lg overflow-hidden">
+              <img src="{{ member.img }}" alt="{{ member.name }}" class="h-full w-full object-cover">
+            </div>
+            <div class="mt-3 font-semibold">{{ member.name }}</div>
+            <div class="text-sm text-slate-600">{{ member.role }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600">© <span id="year"></span> Pawkiess</div>
+  </footer>
+
+  <script>
+    const b=document.getElementById('menuBtn');
+    const m=document.getElementById('mobileMenu');
+    if(b){b.addEventListener('click',()=>m.classList.toggle('hidden'))}
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

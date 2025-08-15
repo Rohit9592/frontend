@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Pawkiess</title>
+  <meta name="description" content="Get in touch with the Pawkiess team.">
+  <script>tailwind={config:{theme:{extend:{colors:{brand:{600:'#0d9675'}}}}}};</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-slate-800">
+  <header class="border-b bg-white sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="{% url 'home' %}" class="flex items-center gap-2 font-semibold text-brand-600">🐾 <span>Pawkiess</span></a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="{% url 'services' %}" class="hover:text-brand-600">Services</a>
+        <a href="{% url 'owner_features' %}" class="hover:text-brand-600">Pet Owners</a>
+        <a href="{% url 'sitter_features' %}" class="hover:text-brand-600">Pet Sitters</a>
+        <a href="{% url 'pricing' %}" class="hover:text-brand-600">Pricing</a>
+        <a href="{% url 'contact' %}" class="hover:text-brand-600">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden h-10 w-10 rounded hover:bg-slate-100">
+        <svg class="m-auto h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4">
+      <div class="grid gap-2 text-sm">
+        <a href="{% url 'services' %}" class="px-3 py-2 rounded hover:bg-slate-100">Services</a>
+        <a href="{% url 'owner_features' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pet Owners</a>
+        <a href="{% url 'sitter_features' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pet Sitters</a>
+        <a href="{% url 'pricing' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pricing</a>
+        <a href="{% url 'contact' %}" class="px-3 py-2 rounded hover:bg-slate-100">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="py-12 bg-gradient-to-b from-slate-50 to-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <h1 class="text-3xl sm:text-4xl font-bold">Contact us</h1>
+          <p class="mt-3 text-slate-600">We’d love to hear from you. Send a message and our team will get back shortly.</p>
+          {% if submitted %}
+            <div class="mt-4 p-3 rounded-md bg-emerald-50 text-emerald-700">Thanks{% if name %}, {{ name }}{% endif %}! We received your message.</div>
+          {% endif %}
+          <form method="post" class="mt-6 grid gap-3">
+            {% csrf_token %}
+            <div>
+              <label class="block text-sm">Name</label>
+              <input name="name" required class="mt-1 w-full rounded-md border px-3 py-2" placeholder="Your name">
+            </div>
+            <div>
+              <label class="block text-sm">Email</label>
+              <input type="email" name="email" required class="mt-1 w-full rounded-md border px-3 py-2" placeholder="you@example.com">
+            </div>
+            <div>
+              <label class="block text-sm">Message</label>
+              <textarea name="message" rows="5" required class="mt-1 w-full rounded-md border px-3 py-2" placeholder="How can we help?"></textarea>
+            </div>
+            <button class="mt-2 inline-flex px-5 py-3 rounded-lg bg-brand-600 text-white hover:bg-brand-700">Send message</button>
+          </form>
+        </div>
+        <div class="rounded-2xl overflow-hidden border bg-white">
+          <iframe title="Google Maps" src="https://www.google.com/maps?q=New+York&output=embed" class="w-full h-80"></iframe>
+          <div class="p-4 text-sm text-slate-600">Find us in major urban centers nationwide.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600">Or email us at <a href="mailto:hello@pawkiess.com" class="text-brand-600 hover:underline">hello@pawkiess.com</a></div>
+  </footer>
+
+  <script>
+    const b=document.getElementById('menuBtn');
+    const m=document.getElementById('mobileMenu');
+    if(b){b.addEventListener('click',()=>m.classList.toggle('hidden'))}
+  </script>
+</body>
+</html>

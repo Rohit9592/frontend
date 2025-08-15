@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pawkiess — Trusted Pet Sitting, Walking, and Care</title>
+  <meta name="description" content="Pawkiess connects loving, background-checked pet sitters with pet parents. Book sitting, walking, grooming, and daycare with live updates & GPS tracking.">
+  <script>
+    tailwind = undefined; /* appease CSP linters */
+    tailwind = window.tailwind || {};
+    window.tailwind = tailwind;
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#effef9', 100: '#cffded', 200: '#a6f6dd', 300: '#74e7c6', 400: '#3ed0a7', 500: '#18b68c', 600: '#0d9675', 700: '#0f7760', 800: '#115f50', 900: '#0f4f43'
+            },
+          accent: {
+            50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74', 400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c', 800: '#9a3412', 900: '#7c2d12'
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .float { animation: float 6s ease-in-out infinite; }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-white to-brand-50 text-slate-800">
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="{% url 'home' %}" class="flex items-center gap-2 font-semibold text-brand-700">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-100 text-brand-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 10.5c1.657 0 3-1.79 3-4s-1.343-4-3-4-3 1.79-3 4 1.343 4 3 4zm15 0c1.657 0 3-1.79 3-4s-1.343-4-3-4-3 1.79-3 4 1.343 4 3 4zM6 21c0-2.761 3.582-5 8-5s8 2.239 8 5v1H6v-1zM9 9.5c.828 0 1.5-.895 1.5-2s-.672-2-1.5-2-1.5.895-1.5 2 .672 2 1.5 2zm6 0c.828 0 1.5-.895 1.5-2s-.672-2-1.5-2-1.5.895-1.5 2 .672 2 1.5 2z"/></svg>
+          </span>
+          <span class="text-xl">Pawkiess</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="{% url 'services' %}" class="hover:text-brand-600">Services</a>
+          <a href="{% url 'owner_features' %}" class="hover:text-brand-600">Pet Owners</a>
+          <a href="{% url 'sitter_features' %}" class="hover:text-brand-600">Pet Sitters</a>
+          <a href="{% url 'pricing' %}" class="hover:text-brand-600">Pricing</a>
+          <a href="{% url 'testimonials' %}" class="hover:text-brand-600">Reviews</a>
+          <a href="{% url 'blog' %}" class="hover:text-brand-600">Tips</a>
+          <a href="{% url 'contact' %}" class="hover:text-brand-600">Contact</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-3">
+          <a href="{% url 'login' %}" class="px-3 py-2 text-sm rounded-md hover:bg-slate-100">Log in</a>
+          <a href="{% url 'signup' %}" class="px-3 py-2 text-sm rounded-md bg-brand-600 text-white hover:bg-brand-700">Sign up</a>
+        </div>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md hover:bg-slate-100">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden pb-4">
+        <div class="grid gap-2 text-sm">
+          <a href="{% url 'services' %}" class="px-3 py-2 rounded hover:bg-slate-100">Services</a>
+          <a href="{% url 'owner_features' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pet Owners</a>
+          <a href="{% url 'sitter_features' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pet Sitters</a>
+          <a href="{% url 'pricing' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pricing</a>
+          <a href="{% url 'testimonials' %}" class="px-3 py-2 rounded hover:bg-slate-100">Reviews</a>
+          <a href="{% url 'blog' %}" class="px-3 py-2 rounded hover:bg-slate-100">Tips</a>
+          <a href="{% url 'contact' %}" class="px-3 py-2 rounded hover:bg-slate-100">Contact</a>
+          <div class="flex gap-2 pt-2">
+            <a href="{% url 'login' %}" class="flex-1 px-3 py-2 text-center rounded border">Log in</a>
+            <a href="{% url 'signup' %}" class="flex-1 px-3 py-2 text-center rounded bg-brand-600 text-white">Sign up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 -z-10 opacity-20 pointer-events-none">
+        <svg class="absolute -top-20 -right-20 h-96 w-96 text-brand-200 float" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="currentColor" d="M47.5,-61.6C61.8,-56.9,73.3,-41.3,77.8,-24.1C82.3,-6.8,79.8,12,70.7,26.1C61.6,40.2,45.9,49.6,30.1,56.9C14.3,64.2,-1.7,69.4,-17.5,67C-33.4,64.5,-49.1,54.4,-58.7,40.3C-68.3,26.2,-71.7,8.1,-68.6,-7.2C-65.5,-22.6,-56,-35.1,-44.4,-40.7C-32.7,-46.3,-18.9,-45,-4.4,-41.7C10.2,-38.5,20.5,-33.4,33.9,-38.1C47.4,-42.7,63.1,-57.4,47.5,-61.6Z" transform="translate(100 100)"/>
+        </svg>
+      </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-slate-900">Care they feel. <span class="text-brand-600">Updates you trust.</span></h1>
+          <p class="mt-4 text-lg text-slate-600">Book loving, vetted pet sitters and walkers. Live GPS tracking, photo updates, and secure payments—right from your phone.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="{% url 'signup' %}" class="px-5 py-3 rounded-lg bg-brand-600 text-white hover:bg-brand-700">Get started</a>
+            <a href="{% url 'services' %}" class="px-5 py-3 rounded-lg border border-slate-300 hover:bg-slate-50">Explore services</a>
+          </div>
+          <div class="mt-6 flex items-center gap-4 text-sm text-slate-500">
+            <div class="flex items-center gap-1"><span class="text-amber-500">★★★★★</span><span>4.9/5 from 1,200+ reviews</span></div>
+            <div class="flex items-center gap-1"><svg class="h-4 w-4 text-emerald-500" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-7.778 7.778a1 1 0 01-1.414 0L3.293 10.95a1 1 0 011.414-1.414l3.101 3.101 7.071-7.071a1 1 0 011.414 0z"/></svg><span>Background-checked sitters</span></div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-brand-100 to-amber-100 p-3">
+            <div class="h-full w-full rounded-xl overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1470&auto=format&fit=crop" alt="Happy dog with sitter" class="h-full w-full object-cover">
+            </div>
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-white shadow-xl rounded-xl p-4 flex items-center gap-3">
+            <div class="h-10 w-10 rounded-full bg-emerald-100 text-emerald-600 inline-flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.14 2 5 5.14 5 9c0 6.25 7 13 7 13s7-6.75 7-13c0-3.86-3.14-7-7-7z"/></svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold">Live GPS</div>
+              <div class="text-xs text-slate-500">Track every walk</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-semibold">Why pet parents choose Pawkiess</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="p-6 rounded-xl border bg-white hover:shadow-md transition">
+            <div class="h-10 w-10 rounded-lg bg-brand-100 text-brand-600 inline-flex items-center justify-center">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-6.58 8-12a8 8 0 10-16 0c0 5.42 8 12 8 12z"/></svg>
+            </div>
+            <h3 class="mt-4 font-semibold">Vetted sitters</h3>
+            <p class="mt-1 text-sm text-slate-600">Background checks, ID verification, and community reviews.</p>
+          </div>
+          <div class="p-6 rounded-xl border bg-white hover:shadow-md transition">
+            <div class="h-10 w-10 rounded-lg bg-amber-100 text-amber-600 inline-flex items-center justify-center">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3 class="mt-4 font-semibold">Real-time updates</h3>
+            <p class="mt-1 text-sm text-slate-600">Get photos, notes, and potty updates right to your phone.</p>
+          </div>
+          <div class="p-6 rounded-xl border bg-white hover:shadow-md transition">
+            <div class="h-10 w-10 rounded-lg bg-emerald-100 text-emerald-600 inline-flex items-center justify-center">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 15l-4-4 1.5-1.5L11 13l5.5-5.5L18 9l-7 8z"/></svg>
+            </div>
+            <h3 class="mt-4 font-semibold">Safe & insured</h3>
+            <p class="mt-1 text-sm text-slate-600">Secure payments, sitter guarantee, and 24/7 support.</p>
+          </div>
+          <div class="p-6 rounded-xl border bg-white hover:shadow-md transition">
+            <div class="h-10 w-10 rounded-lg bg-blue-100 text-blue-600 inline-flex items-center justify-center">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v2H4zM4 11h16v2H4zM4 18h16v2H4z"/></svg>
+            </div>
+            <h3 class="mt-4 font-semibold">Book in minutes</h3>
+            <p class="mt-1 text-sm text-slate-600">Instant search, availability, and seamless checkout.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+        <div class="order-2 lg:order-1">
+          <h2 class="text-2xl sm:text-3xl font-semibold">Designed for city life</h2>
+          <p class="mt-3 text-slate-600">From last-minute trips to regular walks, Pawkiess fits your routine. Our sitters are local, reliable, and truly love pets.</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-700">
+            <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> GPS-tracked walks and visit timelines</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> In-app chat, photos, and health notes</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Secure payments and sitter guarantees</li>
+          </ul>
+          <div class="mt-6">
+            <a href="{% url 'pricing' %}" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-amber-500 text-white hover:bg-amber-600">
+              See plans
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1470&auto=format&fit=crop" alt="Cat relaxing at home" class="h-full w-full object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-16 border-t bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <div class="flex items-center gap-2 font-semibold text-brand-700">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-100 text-brand-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 10.5c1.657 0 3-1.79 3-4s-1.343-4-3-4-3 1.79-3 4 1.343 4 3 4zm15 0c1.657 0 3-1.79 3-4s-1.343-4-3-4-3 1.79-3 4 1.343 4 3 4zM6 21c0-2.761 3.582-5 8-5s8 2.239 8 5v1H6v-1zM9 9.5c.828 0 1.5-.895 1.5-2s-.672-2-1.5-2-1.5.895-1.5 2 .672 2 1.5 2zm6 0c.828 0 1.5-.895 1.5-2s-.672-2-1.5-2-1.5.895-1.5 2 .672 2 1.5 2z"/></svg>
+          </span>
+          <span>Pawkiess</span>
+        </div>
+        <p class="mt-3 text-slate-600">Modern pet care for busy city life.</p>
+      </div>
+      <div>
+        <div class="font-semibold">Explore</div>
+        <ul class="mt-3 space-y-2">
+          <li><a href="{% url 'about' %}" class="hover:text-brand-600">About</a></li>
+          <li><a href="{% url 'services' %}" class="hover:text-brand-600">Services</a></li>
+          <li><a href="{% url 'pricing' %}" class="hover:text-brand-600">Pricing</a></li>
+          <li><a href="{% url 'blog' %}" class="hover:text-brand-600">Tips</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold">Support</div>
+        <ul class="mt-3 space-y-2">
+          <li><a href="{% url 'testimonials' %}" class="hover:text-brand-600">Reviews</a></li>
+          <li><a href="{% url 'contact' %}" class="hover:text-brand-600">Contact</a></li>
+          <li><a href="{% url 'login' %}" class="hover:text-brand-600">Login</a></li>
+          <li><a href="{% url 'signup' %}" class="hover:text-brand-600">Sign up</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold">Newsletter</div>
+        <form onsubmit="event.preventDefault(); document.getElementById('nlMsg').classList.remove('hidden');" class="mt-3 flex gap-2">
+          <input type="email" required placeholder="you@example.com" class="flex-1 rounded-md border px-3 py-2">
+          <button class="px-3 py-2 rounded-md bg-brand-600 text-white hover:bg-brand-700">Join</button>
+        </form>
+        <p id="nlMsg" class="hidden mt-2 text-xs text-emerald-600">Thanks for joining!</p>
+      </div>
+    </div>
+    <div class="text-center text-xs text-slate-500 py-6">© <span id="year"></span> Pawkiess. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const mobileBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileBtn) mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
