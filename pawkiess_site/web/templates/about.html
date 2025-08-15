@@ -8,8 +8,8 @@
   <script>tailwind={config:{theme:{extend:{colors:{brand:{500:'#18b68c',600:'#0d9675'}}}}}};</script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen bg-white text-slate-800">
-  <header class="border-b bg-white sticky top-0 z-40">
+<body class="min-h-screen bg-gradient-to-br from-amber-50 via-rose-50 to-sky-50 text-slate-800">
+  <header class="border-b bg-white/80 backdrop-blur sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="{% url 'home' %}" class="flex items-center gap-2 font-semibold text-brand-600">
         <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-100 text-brand-600">🐾</span>
@@ -39,22 +39,23 @@
   </header>
 
   <main>
-    <section class="bg-gradient-to-b from-brand-50 to-white py-16">
+    <section class="relative overflow-hidden py-16">
+      <div class="absolute inset-0 -z-10 bg-[url('https://images.unsplash.com/photo-1601758064130-58b4d7dca989?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-3xl sm:text-4xl font-bold">We believe happy pets make happy people</h1>
-        <p class="mt-3 text-slate-600 max-w-3xl">Pawkiess was founded by lifelong pet lovers to solve a simple problem: finding trustworthy, reliable care for our furry family. Today, we connect pet parents with background-checked sitters who treat pets like their own.</p>
+        <p class="mt-3 text-slate-700 max-w-3xl">Pawkiess was founded by lifelong pet lovers to solve a simple problem: finding trustworthy, reliable care for our furry family. Today, we connect pet parents with background-checked sitters who treat pets like their own.</p>
         <div class="mt-8 grid gap-6 md:grid-cols-3">
-          <div class="p-6 rounded-xl border bg-white">
+          <div class="p-6 rounded-xl border bg-white/80 backdrop-blur">
             <div class="text-sm text-slate-500">Our mission</div>
             <div class="mt-1 font-semibold">Put pet wellbeing first</div>
             <p class="mt-2 text-sm text-slate-600">Safety, comfort, and enrichment guide everything we build.</p>
           </div>
-          <div class="p-6 rounded-xl border bg-white">
+          <div class="p-6 rounded-xl border bg-white/80 backdrop-blur">
             <div class="text-sm text-slate-500">Our promise</div>
             <div class="mt-1 font-semibold">Trust through transparency</div>
             <p class="mt-2 text-sm text-slate-600">Live updates, reviews, and clear policies you can count on.</p>
           </div>
-          <div class="p-6 rounded-xl border bg-white">
+          <div class="p-6 rounded-xl border bg-white/80 backdrop-blur">
             <div class="text-sm text-slate-500">Our impact</div>
             <div class="mt-1 font-semibold">Empower local sitters</div>
             <p class="mt-2 text-sm text-slate-600">Flexible, fairly paid work for caring professionals.</p>
@@ -67,7 +68,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <h2 class="text-2xl sm:text-3xl font-semibold">Our story</h2>
-          <p class="mt-3 text-slate-600">From a small group of neighborhood sitters to a citywide community, Pawkiess grew through word of mouth—pet by pet, family by family.</p>
+          <p class="mt-3 text-slate-700">From a small group of neighborhood sitters to a citywide community, Pawkiess grew through word of mouth—pet by pet, family by family.</p>
           <ul class="mt-4 space-y-2 text-sm text-slate-700">
             <li>2019 — Launched MVP in 3 neighborhoods</li>
             <li>2021 — Introduced GPS walk tracking and photo timelines</li>
@@ -80,7 +81,7 @@
       </div>
     </section>
 
-    <section class="py-16 bg-slate-50">
+    <section class="py-16 bg-slate-50/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl sm:text-3xl font-semibold">Meet our team</h2>
         <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -103,7 +104,7 @@
     </section>
   </main>
 
-  <footer class="border-t">
+  <footer class="border-t bg-white/80 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600">© <span id="year"></span> Pawkiess</div>
   </footer>
 

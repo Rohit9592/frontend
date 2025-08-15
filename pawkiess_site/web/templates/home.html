@@ -6,18 +6,16 @@
   <title>Pawkiess — Trusted Pet Sitting, Walking, and Care</title>
   <meta name="description" content="Pawkiess connects loving, background-checked pet sitters with pet parents. Book sitting, walking, grooming, and daycare with live updates & GPS tracking.">
   <script>
-    tailwind = undefined; /* appease CSP linters */
     tailwind = window.tailwind || {};
-    window.tailwind = tailwind;
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: {
-              50: '#effef9', 100: '#cffded', 200: '#a6f6dd', 300: '#74e7c6', 400: '#3ed0a7', 500: '#18b68c', 600: '#0d9675', 700: '#0f7760', 800: '#115f50', 900: '#0f4f43'
-            },
-          accent: {
-            50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74', 400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c', 800: '#9a3412', 900: '#7c2d12'
+            brand: { 50:'#effef9',100:'#cffded',200:'#a6f6dd',300:'#74e7c6',400:'#3ed0a7',500:'#18b68c',600:'#0d9675',700:'#0f7760',800:'#115f50',900:'#0f4f43' }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'spin-slow': 'spin 10s linear infinite'
           }
         }
       }
@@ -25,14 +23,10 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-    .float { animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
   </style>
 </head>
-<body class="min-h-screen bg-gradient-to-b from-white to-brand-50 text-slate-800">
+<body class="min-h-screen bg-gradient-to-br from-amber-50 via-rose-50 to-sky-50 text-slate-800">
   <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
@@ -79,27 +73,29 @@
 
   <main>
     <section class="relative overflow-hidden">
-      <div class="absolute inset-0 -z-10 opacity-20 pointer-events-none">
-        <svg class="absolute -top-20 -right-20 h-96 w-96 text-brand-200 float" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <path fill="currentColor" d="M47.5,-61.6C61.8,-56.9,73.3,-41.3,77.8,-24.1C82.3,-6.8,79.8,12,70.7,26.1C61.6,40.2,45.9,49.6,30.1,56.9C14.3,64.2,-1.7,69.4,-17.5,67C-33.4,64.5,-49.1,54.4,-58.7,40.3C-68.3,26.2,-71.7,8.1,-68.6,-7.2C-65.5,-22.6,-56,-35.1,-44.4,-40.7C-32.7,-46.3,-18.9,-45,-4.4,-41.7C10.2,-38.5,20.5,-33.4,33.9,-38.1C47.4,-42.7,63.1,-57.4,47.5,-61.6Z" transform="translate(100 100)"/>
-        </svg>
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-0 bg-gradient-to-br from-amber-100/70 via-rose-100/70 to-sky-100/70"></div>
+        <div class="absolute -top-28 -left-20 w-[38rem] h-[38rem] rounded-full bg-pink-200/40 blur-3xl animate-float"></div>
+        <div class="absolute -bottom-32 -right-10 w-[42rem] h-[42rem] rounded-full bg-emerald-200/40 blur-3xl animate-float" style="animation-delay:1.2s"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
       </div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h1 class="text-4xl sm:text-5xl font-bold leading-tight text-slate-900">Care they feel. <span class="text-brand-600">Updates you trust.</span></h1>
-          <p class="mt-4 text-lg text-slate-600">Book loving, vetted pet sitters and walkers. Live GPS tracking, photo updates, and secure payments—right from your phone.</p>
+          <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight text-slate-900">Care they feel. <span class="text-brand-600">Updates you trust.</span></h1>
+          <p class="mt-4 text-lg text-slate-700">Book loving, vetted pet sitters and walkers. Live GPS tracking, photo updates, and secure payments—right from your phone.</p>
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href="{% url 'signup' %}" class="px-5 py-3 rounded-lg bg-brand-600 text-white hover:bg-brand-700">Get started</a>
-            <a href="{% url 'services' %}" class="px-5 py-3 rounded-lg border border-slate-300 hover:bg-slate-50">Explore services</a>
+            <a href="{% url 'signup' %}" class="px-5 py-3 rounded-xl bg-brand-600 text-white hover:bg-brand-700 shadow-sm">Get started</a>
+            <a href="{% url 'services' %}" class="px-5 py-3 rounded-xl border border-slate-300 hover:bg-white/60 backdrop-blur">Explore services</a>
           </div>
-          <div class="mt-6 flex items-center gap-4 text-sm text-slate-500">
+          <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-slate-600">
             <div class="flex items-center gap-1"><span class="text-amber-500">★★★★★</span><span>4.9/5 from 1,200+ reviews</span></div>
-            <div class="flex items-center gap-1"><svg class="h-4 w-4 text-emerald-500" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-7.778 7.778a1 1 0 01-1.414 0L3.293 10.95a1 1 0 011.414-1.414l3.101 3.101 7.071-7.071a1 1 0 011.414 0z"/></svg><span>Background-checked sitters</span></div>
+            <div class="flex items-center gap-1"><svg class="h-4 w-4 text-emerald-600" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 010 1.414l-7.778 7.778a1 1 0 01-1.414 0L3.293 10.95a1 1 0 011.414-1.414l3.101 3.101 7.071-7.071a1 1 0 011.414 0z"/></svg><span>Background-checked sitters</span></div>
+            <div class="flex items-center gap-1"><svg class="h-4 w-4 text-blue-600" viewBox="0 0 20 20" fill="currentColor"><path d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm6-1l-3 3 1.5 1.5L8 12l5.5-5.5L15 8l-7 8z"/></svg><span>Secure payments</span></div>
           </div>
         </div>
         <div class="relative">
-          <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-brand-100 to-amber-100 p-3">
-            <div class="h-full w-full rounded-xl overflow-hidden">
+          <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-brand-100 to-amber-100 p-3 shadow-xl">
+            <div class="h-full w-full rounded-2xl overflow-hidden">
               <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1470&auto=format&fit=crop" alt="Happy dog with sitter" class="h-full w-full object-cover">
             </div>
           </div>
@@ -112,6 +108,21 @@
               <div class="text-xs text-slate-500">Track every walk</div>
             </div>
           </div>
+          <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=900&auto=format&fit=crop" alt="Cat" class="hidden md:block absolute -right-10 -top-10 w-32 h-32 object-cover rounded-full ring-8 ring-white/70 animate-float">
+        </div>
+      </div>
+    </section>
+
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl bg-white/70 backdrop-blur border p-4 md:p-6 flex flex-wrap items-center justify-between gap-4 shadow-sm">
+          <div class="text-slate-600 text-sm">Trusted by pet parents across major cities</div>
+          <div class="flex items-center gap-6 opacity-80">
+            <span class="inline-flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-amber-400 animate-pulse"></span><span class="text-xs">NYC</span></span>
+            <span class="inline-flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span><span class="text-xs">SF</span></span>
+            <span class="inline-flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-sky-400 animate-pulse"></span><span class="text-xs">LA</span></span>
+            <span class="inline-flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-rose-400 animate-pulse"></span><span class="text-xs">Chicago</span></span>
+          </div>
         </div>
       </div>
     </section>
@@ -120,33 +131,57 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl sm:text-3xl font-semibold">Why pet parents choose Pawkiess</h2>
         <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="p-6 rounded-xl border bg-white hover:shadow-md transition">
+          <div class="p-6 rounded-2xl border bg-white hover:shadow-md transition">
             <div class="h-10 w-10 rounded-lg bg-brand-100 text-brand-600 inline-flex items-center justify-center">
               <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-6.58 8-12a8 8 0 10-16 0c0 5.42 8 12 8 12z"/></svg>
             </div>
             <h3 class="mt-4 font-semibold">Vetted sitters</h3>
             <p class="mt-1 text-sm text-slate-600">Background checks, ID verification, and community reviews.</p>
           </div>
-          <div class="p-6 rounded-xl border bg-white hover:shadow-md transition">
+          <div class="p-6 rounded-2xl border bg-white hover:shadow-md transition">
             <div class="h-10 w-10 rounded-lg bg-amber-100 text-amber-600 inline-flex items-center justify-center">
               <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6v6l4 2"/></svg>
             </div>
             <h3 class="mt-4 font-semibold">Real-time updates</h3>
             <p class="mt-1 text-sm text-slate-600">Get photos, notes, and potty updates right to your phone.</p>
           </div>
-          <div class="p-6 rounded-xl border bg-white hover:shadow-md transition">
+          <div class="p-6 rounded-2xl border bg-white hover:shadow-md transition">
             <div class="h-10 w-10 rounded-lg bg-emerald-100 text-emerald-600 inline-flex items-center justify-center">
               <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 15l-4-4 1.5-1.5L11 13l5.5-5.5L18 9l-7 8z"/></svg>
             </div>
             <h3 class="mt-4 font-semibold">Safe & insured</h3>
             <p class="mt-1 text-sm text-slate-600">Secure payments, sitter guarantee, and 24/7 support.</p>
           </div>
-          <div class="p-6 rounded-xl border bg-white hover:shadow-md transition">
+          <div class="p-6 rounded-2xl border bg-white hover:shadow-md transition">
             <div class="h-10 w-10 rounded-lg bg-blue-100 text-blue-600 inline-flex items-center justify-center">
               <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v2H4zM4 11h16v2H4zM4 18h16v2H4z"/></svg>
             </div>
             <h3 class="mt-4 font-semibold">Book in minutes</h3>
             <p class="mt-1 text-sm text-slate-600">Instant search, availability, and seamless checkout.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 relative overflow-hidden">
+      <div class="absolute inset-0 -z-10 bg-[url('https://images.unsplash.com/photo-1534361960057-19889db9621e?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-semibold">How it works</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="p-6 rounded-2xl bg-white/80 backdrop-blur border">
+            <div class="h-10 w-10 rounded-lg bg-rose-100 text-rose-600 inline-flex items-center justify-center">1</div>
+            <h3 class="mt-3 font-semibold">Tell us about your pet</h3>
+            <p class="mt-1 text-sm text-slate-600">Share their routine, preferences, and any special needs.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-white/80 backdrop-blur border">
+            <div class="h-10 w-10 rounded-lg bg-sky-100 text-sky-600 inline-flex items-center justify-center">2</div>
+            <h3 class="mt-3 font-semibold">Match with a sitter</h3>
+            <p class="mt-1 text-sm text-slate-600">Browse profiles, reviews, and availability in minutes.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-white/80 backdrop-blur border">
+            <div class="h-10 w-10 rounded-lg bg-emerald-100 text-emerald-600 inline-flex items-center justify-center">3</div>
+            <h3 class="mt-3 font-semibold">Relax with live updates</h3>
+            <p class="mt-1 text-sm text-slate-600">Track walks, see photos, and chat with your sitter.</p>
           </div>
         </div>
       </div>
@@ -163,27 +198,43 @@
             <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Secure payments and sitter guarantees</li>
           </ul>
           <div class="mt-6">
-            <a href="{% url 'pricing' %}" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-amber-500 text-white hover:bg-amber-600">
+            <a href="{% url 'pricing' %}" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 text-white hover:bg-amber-600 shadow-sm">
               See plans
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
             </a>
           </div>
         </div>
         <div class="order-1 lg:order-2">
-          <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+          <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-xl">
             <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1470&auto=format&fit=crop" alt="Cat relaxing at home" class="h-full w-full object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl p-8 md:p-12 bg-gradient-to-r from-brand-500 to-amber-400 text-white relative overflow-hidden">
+          <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1525253013412-55c1a69a5738?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
+          <div class="relative">
+            <h3 class="text-2xl font-bold">Ready to meet your pet’s new favorite human?</h3>
+            <p class="mt-2 text-white/90">Join thousands of pet parents who trust Pawkiess for loving care and live updates.</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="{% url 'signup' %}" class="px-5 py-3 rounded-xl bg-white text-slate-900 hover:bg-white/90">Create account</a>
+              <a href="{% url 'services' %}" class="px-5 py-3 rounded-xl border border-white/60 hover:bg-white/10">View services</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="mt-16 border-t bg-white">
+  <footer class="mt-16 border-t bg-white/80 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8 text-sm">
       <div>
         <div class="flex items-center gap-2 font-semibold text-brand-700">
           <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-100 text-brand-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 10.5c1.657 0 3-1.79 3-4s-1.343-4-3-4-3 1.79-3 4 1.343 4 3 4zm15 0c1.657 0 3-1.79 3-4s-1.343-4-3-4-3 1.79-3 4 1.343 4 3 4zM6 21c0-2.761 3.582-5 8-5s8 2.239 8 5v1H6v-1zM9 9.5c.828 0 1.5-.895 1.5-2s-.672-2-1.5-2-1.5.895-1.5 2 .672 2 1.5 2zm6 0c.828 0 1.5-.895 1.5-2s-.672-2-1.5-2-1.5.895-1.5 2 .672 2 1.5 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 10.5c1.657 0 3-1.79 3-4s-1.343-4-3-4-3 1.79-3 4 1.343 4 3 4zm15 0c1.657 0 3-1.79 3-4s-1.343-4-3-4-3 1.79-3 4 1.343 4 3 4zM6 21c0-2.761 3.582-5 8-5s8 2.239 8 5v1H6v-1zM9 9.5c.828 0 1.5-.895 1.5-2s-.672-2-1.5-2-1.5.895-1.5 2 .672 2 1.5 2z"/></svg>
           </span>
           <span>Pawkiess</span>
         </div>

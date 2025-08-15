@@ -8,8 +8,8 @@
   <script>tailwind={config:{theme:{extend:{colors:{brand:{600:'#0d9675'}}}}}};</script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white text-slate-800">
-  <header class="border-b bg-white sticky top-0 z-40">
+<body class="min-h-screen bg-gradient-to-br from-amber-50 via-rose-50 to-sky-50 text-slate-800">
+  <header class="border-b bg-white/80 backdrop-blur sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="{% url 'home' %}" class="flex items-center gap-2 font-semibold text-brand-600">🐾 <span>Pawkiess</span></a>
       <nav class="hidden md:flex items-center gap-6 text-sm">
@@ -33,12 +33,13 @@
   </header>
 
   <main>
-    <section class="py-12 bg-gradient-to-b from-slate-50 to-white">
+    <section class="relative overflow-hidden py-12">
+      <div class="absolute inset-0 -z-10 bg-[url('https://images.unsplash.com/photo-1602067340370-bdcebe8b36b9?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-3xl sm:text-4xl font-bold">Simple, transparent pricing</h1>
-        <p class="mt-3 text-slate-600">Pay per booking or subscribe and save on recurring services.</p>
+        <p class="mt-3 text-slate-700">Pay per booking or subscribe and save on recurring services.</p>
         <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div class="p-6 rounded-2xl border bg-white">
+          <div class="p-6 rounded-2xl border bg-white/80 backdrop-blur">
             <div class="text-sm font-semibold text-slate-600">Starter</div>
             <div class="mt-2 text-4xl font-bold">$19<span class="text-base font-medium text-slate-500">/mo</span></div>
             <ul class="mt-4 space-y-2 text-sm text-slate-700">
@@ -48,7 +49,7 @@
             </ul>
             <a href="{% url 'signup' %}" class="mt-6 inline-flex px-5 py-3 rounded-lg bg-brand-600 text-white hover:bg-brand-700">Choose plan</a>
           </div>
-          <div class="p-6 rounded-2xl border bg-white ring-2 ring-brand-600">
+          <div class="p-6 rounded-2xl border bg-gradient-to-br from-white to-emerald-50 ring-2 ring-brand-600 shadow-md">
             <div class="text-sm font-semibold text-brand-600">Popular</div>
             <div class="mt-2 text-4xl font-bold">$39<span class="text-base font-medium text-slate-500">/mo</span></div>
             <ul class="mt-4 space-y-2 text-sm text-slate-700">
@@ -58,7 +59,7 @@
             </ul>
             <a href="{% url 'signup' %}" class="mt-6 inline-flex px-5 py-3 rounded-lg bg-brand-600 text-white hover:bg-brand-700">Choose plan</a>
           </div>
-          <div class="p-6 rounded-2xl border bg-white">
+          <div class="p-6 rounded-2xl border bg-white/80 backdrop-blur">
             <div class="text-sm font-semibold text-slate-600">Premium</div>
             <div class="mt-2 text-4xl font-bold">$79<span class="text-base font-medium text-slate-500">/mo</span></div>
             <ul class="mt-4 space-y-2 text-sm text-slate-700">
@@ -108,7 +109,7 @@
     </section>
   </main>
 
-  <footer class="border-t">
+  <footer class="border-t bg-white/80 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600">Have questions? <a href="{% url 'contact' %}" class="text-brand-600 hover:underline">Contact us</a></div>
   </footer>
 
