@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <h1>Trusted pet sitting, on your schedule</h1>
+  <p>Local, vetted sitters for walks, drop-ins, and overnight care.</p>
+  <div class="hero-actions">
+    <a class="btn primary" href="{% url 'booking' %}">Book now</a>
+    <a class="btn" href="{% url 'services' %}">Explore services</a>
+  </div>
+</section>
+{% endblock %}

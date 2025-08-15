@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">Contact</h2>
+<p>Email us at <a href="mailto:hello@pawkiees.com">hello@pawkiees.com</a> or send a message below.</p>
+<form class="form" method="post">
+  {% csrf_token %}
+  <div class="field"><label>Name<input name="name" required></label></div>
+  <div class="field"><label>Email<input type="email" name="email" required></label></div>
+  <div class="field"><label>Message<textarea name="message" rows="4" required></textarea></label></div>
+  <button class="btn" type="submit">Send</button>
+</form>
+{% endblock %}
