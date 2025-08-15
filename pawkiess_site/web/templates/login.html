@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in — Pawkiess</title>
+  <meta name="description" content="Access your Pawkiess account.">
+  <script>tailwind={config:{theme:{extend:{colors:{brand:{600:'#0d9675'}}}}}};</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-slate-800">
+  <main class="min-h-screen grid place-items-center p-6">
+    <div class="w-full max-w-md p-6 rounded-2xl border bg-white">
+      <a href="{% url 'home' %}" class="inline-flex items-center gap-2 font-semibold text-brand-600">🐾 <span>Pawkiess</span></a>
+      <h1 class="mt-4 text-2xl font-bold">Welcome back</h1>
+      {% if error %}
+        <div class="mt-2 p-2 rounded bg-red-50 text-red-700 text-sm">{{ error }}</div>
+      {% endif %}
+      {% if authenticated %}
+        <div class="mt-2 p-2 rounded bg-emerald-50 text-emerald-700 text-sm">Logged in! (demo)</div>
+      {% endif %}
+      <form method="post" class="mt-4 grid gap-3">
+        {% csrf_token %}
+        <div>
+          <label class="block text-sm">Email</label>
+          <input type="email" name="email" required class="mt-1 w-full rounded-md border px-3 py-2" placeholder="you@example.com">
+        </div>
+        <div>
+          <label class="block text-sm">Password</label>
+          <input type="password" name="password" required class="mt-1 w-full rounded-md border px-3 py-2" placeholder="••••••••">
+        </div>
+        <button class="mt-2 inline-flex px-5 py-3 rounded-lg bg-brand-600 text-white hover:bg-brand-700 w-full">Log in</button>
+      </form>
+      <p class="mt-3 text-sm text-slate-600">No account? <a href="{% url 'signup' %}" class="text-brand-600 hover:underline">Sign up</a></p>
+    </div>
+  </main>
+</body>
+</html>

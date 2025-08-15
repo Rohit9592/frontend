@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For Pet Sitters — Pawkiess</title>
+  <meta name="description" content="Create profiles, manage your schedule, and get paid seamlessly with Pawkiess.">
+  <script>tailwind={config:{theme:{extend:{colors:{brand:{600:'#0d9675'}}}}}};</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-slate-800">
+  <header class="border-b bg-white sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="{% url 'home' %}" class="flex items-center gap-2 font-semibold text-brand-600">🐾 <span>Pawkiess</span></a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="{% url 'services' %}" class="hover:text-brand-600">Services</a>
+        <a href="{% url 'owner_features' %}" class="hover:text-brand-600">Pet Owners</a>
+        <a href="{% url 'pricing' %}" class="hover:text-brand-600">Pricing</a>
+        <a href="{% url 'contact' %}" class="hover:text-brand-600">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden h-10 w-10 rounded hover:bg-slate-100">
+        <svg class="m-auto h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4">
+      <div class="grid gap-2 text-sm">
+        <a href="{% url 'services' %}" class="px-3 py-2 rounded hover:bg-slate-100">Services</a>
+        <a href="{% url 'owner_features' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pet Owners</a>
+        <a href="{% url 'pricing' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pricing</a>
+        <a href="{% url 'contact' %}" class="px-3 py-2 rounded hover:bg-slate-100">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="py-12 bg-gradient-to-b from-slate-50 to-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl sm:text-4xl font-bold">Built for professional sitters</h1>
+        <div class="mt-8 grid gap-6 md:grid-cols-3">
+          <div class="p-6 rounded-2xl border bg-white">
+            <div class="h-10 w-10 rounded-lg bg-purple-100 text-purple-600 inline-flex items-center justify-center">🧑‍⚕️</div>
+            <h3 class="mt-3 font-semibold">Beautiful profiles</h3>
+            <p class="mt-1 text-sm text-slate-600">Showcase your experience, certifications, and reviews.</p>
+          </div>
+          <div class="p-6 rounded-2xl border bg-white">
+            <div class="h-10 w-10 rounded-lg bg-blue-100 text-blue-600 inline-flex items-center justify-center">📅</div>
+            <h3 class="mt-3 font-semibold">Smart scheduling</h3>
+            <p class="mt-1 text-sm text-slate-600">Set availability, manage bookings, and sync your calendar.</p>
+          </div>
+          <div class="p-6 rounded-2xl border bg-white">
+            <div class="h-10 w-10 rounded-lg bg-emerald-100 text-emerald-600 inline-flex items-center justify-center">💸</div>
+            <h3 class="mt-3 font-semibold">Fast payments</h3>
+            <p class="mt-1 text-sm text-slate-600">Secure payouts with clear transaction history.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-semibold">Grow your business</h2>
+          <ul class="mt-4 space-y-2 text-sm text-slate-700">
+            <li>Exposure to local pet parents</li>
+            <li>In-app messaging and repeat bookings</li>
+            <li>Professional support and resources</li>
+          </ul>
+          <a href="{% url 'signup' %}" class="mt-6 inline-flex px-5 py-3 rounded-lg bg-brand-600 text-white hover:bg-brand-700">Become a sitter</a>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow">
+          <img src="https://images.unsplash.com/photo-1522273500616-6d46bf5b7aaf?q=80&w=1470&auto=format&fit=crop" alt="Sitter scheduling" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600">Questions? <a href="{% url 'contact' %}" class="text-brand-600 hover:underline">Contact us</a></div>
+  </footer>
+
+  <script>
+    const b=document.getElementById('menuBtn');
+    const m=document.getElementById('mobileMenu');
+    if(b){b.addEventListener('click',()=>m.classList.toggle('hidden'))}
+  </script>
+</body>
+</html>

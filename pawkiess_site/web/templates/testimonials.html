@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testimonials — Pawkiess</title>
+  <meta name="description" content="Hear from pet parents who trust Pawkiess.">
+  <script>tailwind={config:{theme:{extend:{colors:{brand:{600:'#0d9675'}}}}}};</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-slate-800">
+  <header class="border-b bg-white sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="{% url 'home' %}" class="flex items-center gap-2 font-semibold text-brand-600">🐾 <span>Pawkiess</span></a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="{% url 'services' %}" class="hover:text-brand-600">Services</a>
+        <a href="{% url 'owner_features' %}" class="hover:text-brand-600">Pet Owners</a>
+        <a href="{% url 'sitter_features' %}" class="hover:text-brand-600">Pet Sitters</a>
+        <a href="{% url 'pricing' %}" class="hover:text-brand-600">Pricing</a>
+        <a href="{% url 'contact' %}" class="hover:text-brand-600">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden h-10 w-10 rounded hover:bg-slate-100">
+        <svg class="m-auto h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4">
+      <div class="grid gap-2 text-sm">
+        <a href="{% url 'services' %}" class="px-3 py-2 rounded hover:bg-slate-100">Services</a>
+        <a href="{% url 'owner_features' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pet Owners</a>
+        <a href="{% url 'sitter_features' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pet Sitters</a>
+        <a href="{% url 'pricing' %}" class="px-3 py-2 rounded hover:bg-slate-100">Pricing</a>
+        <a href="{% url 'contact' %}" class="px-3 py-2 rounded hover:bg-slate-100">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="py-12 bg-gradient-to-b from-slate-50 to-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl sm:text-4xl font-bold">Loved by pets and people</h1>
+        <p class="mt-3 text-slate-600">4.9/5 average from 1,200+ reviews</p>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-left">
+          {% for r in [
+            {'name':'Olivia & Max','text':'Our sitter treated Max like family. The GPS and photos gave us total peace of mind.'},
+            {'name':'Jamal','text':'Super reliable and easy to book. The updates are fantastic.'},
+            {'name':'Priya','text':'My cat is shy, but our sitter knew just how to make her comfortable.'},
+            {'name':'Hannah','text':'Professional, kind, and always on time.'},
+            {'name':'Mateo','text':'Best dog walking experience in the city.'},
+            {'name':'Sofia','text':'Daycare days are now my pup’s favorite!'}
+          ] %}
+          <div class="p-6 rounded-2xl border bg-white">
+            <div class="text-amber-500">★★★★★</div>
+            <p class="mt-3 text-slate-700">{{ r.text }}</p>
+            <div class="mt-3 text-sm text-slate-600">— {{ r.name }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600">Share your story <a href="{% url 'contact' %}" class="text-brand-600 hover:underline">Contact us</a></div>
+  </footer>
+
+  <script>
+    const b=document.getElementById('menuBtn');
+    const m=document.getElementById('mobileMenu');
+    if(b){b.addEventListener('click',()=>m.classList.toggle('hidden'))}
+  </script>
+</body>
+</html>
